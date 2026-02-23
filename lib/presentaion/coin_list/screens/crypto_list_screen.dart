@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constant/constant.dart';
 import 'package:flutter_application_1/domain/entity/crypyo_model.dart';
@@ -10,26 +9,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CoinCryptoScreen extends StatefulWidget {
-  final List<Crypto>? cryptoList;
-  const CoinCryptoScreen({super.key, this.cryptoList});
+  const CoinCryptoScreen({super.key});
   @override
   State<CoinCryptoScreen> createState() => _CoinCryptoScreenState();
 }
 
 class _CoinCryptoScreenState extends State<CoinCryptoScreen> {
-  List<Crypto>? cryptoList;
   bool loadingVisible = false;
-
-  @override
-  void initState() {
-    super.initState();
-    cryptoList = widget.cryptoList;
-  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CoinListBloc(),
+      create: (context) {
+        var bloc = CoinListBloc();
+        bloc.add(LoadInitialCoinEvent());
+        return bloc;
+      },
       child: BlocConsumer<CoinListBloc, CoinListState>(
         listener: (context, state) {
           if (state is CoinListFaildState) {
@@ -66,7 +61,9 @@ class _CoinCryptoScreenState extends State<CoinCryptoScreen> {
                             textDirection: TextDirection.rtl,
                             child: TextField(
                               onChanged: (value) {
-                                // _searchFilter(value);
+                                context.read<CoinListBloc>().add(
+                                  SearchCoinEvent(value),
+                                );
                               },
                               keyboardType: TextInputType.text,
                               decoration: InputDecoration(
