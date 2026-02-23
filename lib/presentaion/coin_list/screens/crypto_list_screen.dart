@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constant/constant.dart';
+import 'package:flutter_application_1/core/di/locator.dart';
 import 'package:flutter_application_1/domain/entity/crypyo_model.dart';
 import 'package:flutter_application_1/presentaion/coin_list/bloc/coin_list_bloc.dart';
 import 'package:flutter_application_1/presentaion/coin_list/bloc/coin_list_event.dart';
@@ -21,7 +22,7 @@ class _CoinCryptoScreenState extends State<CoinCryptoScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        var bloc = CoinListBloc();
+        var bloc = CoinListBloc(locator.get());
         bloc.add(LoadInitialCoinEvent());
         return bloc;
       },
