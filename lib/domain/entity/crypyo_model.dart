@@ -16,16 +16,4 @@ class Crypto {
     this.marketCapUsd,
     this.rank,
   );
-
-  factory Crypto.fromMapJson(Map<String, dynamic> jsonObject) {
-    return Crypto(
-      jsonObject['id'],
-      jsonObject['name'],
-      jsonObject['symbol'],
-      double.parse(jsonObject['changePercent24Hr']),
-      double.parse(jsonObject['priceUsd']),
-      double.parse(jsonObject['marketCapUsd']),
-      int.parse(jsonObject['rank']),
-    );
-  }
 }

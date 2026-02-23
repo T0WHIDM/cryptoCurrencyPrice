@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_application_1/domain/entity/crypyo_model.dart';
 import 'package:flutter_application_1/domain/useCase/all_coin_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'coin_list_event.dart';
@@ -20,40 +18,31 @@ class CoinListBloc extends Bloc<CoinListEvent, CoinListState> {
     on<RefreshCoinEvent>((event, emit) async {
       emit(CoinListLoadingState());
 
-      var response = await Dio().get(
-        'https://rest.coincap.io/v3/assets?apiKey=e9bdb4d77f65c6e71957c233f65c40a585d6209aff09742c6edacb4305132e31',
-      );
-      List<Crypto> cryptoList = response.data['data']
-          .map<Crypto>((jsonMapObject) => Crypto.fromMapJson(jsonMapObject))
-          .toList();
+      var response = await allCoinUseCase.call();
 
-      if (response.statusCode == 200) {
-        emit(CoinListSucsessState(cryptoList: cryptoList));
-      } else {
-        emit(CoinListFaildState(errorMessage: 'faild to fetch data'));
-      }
+      emit(CoinListSucsessState(cryptoList: response));
     });
 
     on<SearchCoinEvent>((event, emit) async {
-      emit(CoinListLoadingState());
+      // emit(CoinListLoadingState());
 
-      List<Crypto> filteredList = [];
-      var response = await Dio().get(
-        'https://rest.coincap.io/v3/assets?apiKey=e9bdb4d77f65c6e71957c233f65c40a585d6209aff09742c6edacb4305132e31',
-      );
-      List<Crypto> cryptoList = response.data['data']
-          .map<Crypto>((jsonMapObject) => Crypto.fromMapJson(jsonMapObject))
-          .toList();
+      // List<Crypto> filteredList = [];
+      // var response = await Dio().get(
+      //   'https://rest.coincap.io/v3/assets?apiKey=e9bdb4d77f65c6e71957c233f65c40a585d6209aff09742c6edacb4305132e31',
+      // );
+      // List<Crypto> cryptoList = response.data['data']
+      //     .map<Crypto>((jsonMapObject) => Crypto.fromMapJson(jsonMapObject))
+      //     .toList();
 
-      filteredList = cryptoList.where((element) {
-        return element.name.toLowerCase().contains(event.query.toLowerCase());
-      }).toList();
+      // filteredList = cryptoList.where((element) {
+      //   return element.name.toLowerCase().contains(event.query.toLowerCase());
+      // }).toList();
 
-      if (response.statusCode == 200) {
-        emit(CoinListSucsessState(cryptoList: filteredList));
-      } else {
-        emit(CoinListFaildState(errorMessage: 'faild to fetch data'));
-      }
+      // if (response.statusCode == 200) {
+      //   emit(CoinListSucsessState(cryptoList: filteredList));
+      // } else {
+      //   emit(CoinListFaildState(errorMessage: 'faild to fetch data'));
+      // }
     });
   }
 }
