@@ -5,7 +5,7 @@ sealed class CoinListState {}
 class CoinListLoadingState extends CoinListState {}
 
 class CoinListSucsessState extends CoinListState {
-  List<Crypto> cryptoList;
+  List<CryptoEntity> cryptoList;
   CoinListSucsessState({required this.cryptoList});
 }
 

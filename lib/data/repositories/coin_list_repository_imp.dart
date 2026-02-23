@@ -7,7 +7,12 @@ class CoinListRepositoryImp extends CoinListRepository {
   CoinListRepositoryImp(this.datasource);
 
   @override
-  Future<List<Crypto>> getCoins() {
+  Future<List<CryptoEntity>> getCoins() {
     return datasource.getCoins();
+  }
+
+  @override
+  Future<List<CryptoEntity>> searchCoins(String query) {
+    return datasource.searchCoins(query);
   }
 }

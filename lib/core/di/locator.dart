@@ -5,12 +5,12 @@ import 'package:flutter_application_1/data/datasource/coin_list_datasource_remot
 import 'package:flutter_application_1/data/repositories/coin_list_repository_imp.dart';
 import 'package:flutter_application_1/domain/repositories/coin_list_repository.dart';
 import 'package:flutter_application_1/domain/useCase/all_coin_use_case.dart';
+import 'package:flutter_application_1/domain/useCase/search_coin_list_use_case.dart';
 import 'package:get_it/get_it.dart';
 
 var locator = GetIt.instance;
 
 Future<void> setupLocator() async {
-  
   //Dio
   locator.registerSingleton<Dio>(DioClient.createDio());
 
@@ -27,5 +27,8 @@ Future<void> setupLocator() async {
   //useCase
   locator.registerSingleton<AllCoinUseCase>(
     AllCoinUseCase(locator<CoinListRepository>()),
+  );
+  locator.registerSingleton<SearchCoinListUsecase>(
+    SearchCoinListUsecase(locator<CoinListRepository>()),
   );
 }

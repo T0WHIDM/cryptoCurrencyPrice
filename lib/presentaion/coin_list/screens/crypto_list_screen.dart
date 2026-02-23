@@ -22,7 +22,7 @@ class _CoinCryptoScreenState extends State<CoinCryptoScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        var bloc = CoinListBloc(locator.get());
+        var bloc = CoinListBloc(locator.get(), locator.get());
         bloc.add(LoadInitialCoinEvent());
         return bloc;
       },
@@ -136,7 +136,7 @@ class _CoinCryptoScreenState extends State<CoinCryptoScreen> {
 class BuildSuccessListWidget extends StatelessWidget {
   const BuildSuccessListWidget({super.key, required this.cryptoList});
 
-  final List<Crypto>? cryptoList;
+  final List<CryptoEntity>? cryptoList;
 
   @override
   Widget build(BuildContext context) {
