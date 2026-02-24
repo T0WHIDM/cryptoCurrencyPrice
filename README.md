@@ -1,16 +1,50 @@
-# flutter_application_1
+📚 About The Project
 
-A new Flutter project.
+Crypto Currency Price is a Flutter-based practice application designed to demonstrate structured software development using Clean Architecture and real-world API integration.
 
-## Getting Started
+This project focuses on applying scalable architectural patterns and best practices to build a maintainable and testable mobile application.
 
-This project is a starting point for a Flutter application.
+🎯 Objectives
 
-A few resources to get you started if this is your first Flutter project:
+Integrating with external RESTful APIs
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Implementing Clean Architecture (Presentation, Domain, Data layers)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Applying SOLID principles
+
+Managing state efficiently
+
+Writing modular and reusable code
+
+Improving separation of concerns
+
+Structuring a project for long-term scalability
+
+🏗 Architectural Overview
+
+The project follows Clean Architecture principles:
+
+Presentation Layer
+Handles UI and state management.
+
+Domain Layer
+Contains business logic, entities, and use cases.
+
+Data Layer
+Manages API calls, models, and repository implementations.
+
+This layered approach ensures:
+
+Better testability
+
+Clear responsibility boundaries
+
+Easier feature expansion
+
+Improved maintainability
+
+🚀 Purpose
+
+This application was built as a structured learning exercise to simulate real-world development scenarios and reinforce architectural best practices in Flutter development.
+
+It is not intended for production use, but rather as a technical showcase of clean code principles and API-driven application design.
