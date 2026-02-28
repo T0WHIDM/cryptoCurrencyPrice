@@ -67,7 +67,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repository**
     ```sh
-    git clone [https://github.com/T0WHIDM/cryptoCurrencyPrice.git](https://github.com/T0WHIDM/cryptoCurrencyPrice.git)
+    git clone [https://github.com/T0WHIDM/cryptoCurrencyPrice.git]
     ```
 2.  **Navigate to the project directory**
     ```sh
@@ -108,8 +108,5 @@ Commit your Changes (git commit -m 'Add some AmazingFeature')
 Push to the Branch (git push origin feature/AmazingFeature)
 
 Open a Pull Request
-
-📞 Contact
-T0WHIDM - GitHub Profile
 
 Project Link: https://github.com/T0WHIDM/cryptoCurrencyPrice
